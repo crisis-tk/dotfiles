@@ -1,0 +1,38 @@
+# エンコーディング
+defencodig utf-8
+
+shell -$SHELL
+
+# prefixキーの設定 Ctrl + t
+escape ^Tt
+
+# スタートアップメニューの削除
+startup_message off
+
+# オートデタッチ
+autodetach on
+
+# emacs keybind for copy mode
+markkeys h=^b:l=^f:$=^e:^d=^v:^D=^V
+
+# Emacs key bind
+bind x eval 'echo "2: split / 1: only / 0: remove / o: focus r: resize"' 'command -c REGION'
+bind -c REGION 2 split
+bind -c REGION 1 only
+bind -c REGION 0 remove
+bind -c REGION o focus
+bind -c REGION r eval 'echo "j: -1 / k: +1 / other: quit"' 'command -c RESIZE'
+bind -c RESIZE = eval 'resize ='  'command -c RESIZE'
+bind -c RESIZE J eval 'resize +5' 'command -c RESIZE'
+bind -c RESIZE K eval 'resize -5' 'command -c RESIZE'
+bind -c RESIZE j eval 'resize +1' 'command -c RESIZE'
+bind -c RESIZE k eval 'resize -1' 'command -c RESIZE'
+
+# copy/scrollback mode (C-t esc)で戻れるhistory bufferを増やす。
+defscrollback 3000
+
+# ビジュアルベルをoffにする。 
+vbell off
+
+# 画面下にスクリーン一覧と時間を表示する。
+hardstatus alwayslastline " %w %= [%y/%m/%d %c] "
