@@ -21,3 +21,13 @@
              (setq ruby-indent-tabs-mode t)
              ;; インデント幅
              (setq ruby-indent-level 2)))
+
+
+;; rsense 0.3
+(setq rsense-home (expand-file-name "~/.emacs.d/site-lisp/rsense-0.3"))
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-rsense-method)
+            (add-to-list 'ac-sources 'ac-source-rsense-constant)))

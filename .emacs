@@ -25,8 +25,10 @@
 (init-loader-load "~/.emacs.d/inits")
 
 ;; auto-complete を有効化
-(require 'auto-complete)
-(global-auto-complete-mode t)
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/ac-dict")
+(ac-config-default)
 
 ;; C-h で BackSpace
 (global-set-key "\C-h" 'backward-delete-char)
